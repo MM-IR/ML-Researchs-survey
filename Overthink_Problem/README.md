@@ -79,3 +79,70 @@ same effect on the victim network.
 
 **这里以欧两个作用, In addition to their practical application regarding diagnosing DNN errors, these visualizations provide a new perspective for reasoning about model interpretability.**
 
+## 我们这里的实验设置
+>这里就是evaluate our techniques on three tasks:
+
+1)CIFAR-10/100/Tiny ImageNet.
+
+这里就是apply the SDN modification to 4 off-the-shelf CNN architectures: VGG/ResNet/Wide-ResNet/MobileNets.
+
+**我们的SDN的early exits策略就是mitigate the wasteful effect of overthinking and cut the avergae inference costs by more than 50% in CIFIR-x, 25% in Tiny ImageNet.**
+>我们的early exit can improve a CNN's accuracy by up to 8%, and recovers the acc of a backdoored CNN from 12 to 84%.
+
+<img width="409" alt="image" src="https://user-images.githubusercontent.com/40928887/125160616-819d5e80-e1b0-11eb-8459-49adfa6c22bf.png">
+
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/40928887/125160639-9843b580-e1b0-11eb-948f-df361824a309.png">
+
+## 为了quantify the test-time inference cost of a network, we measure the average number of floating point operations (FLOPs), a network performs to classify an input.
+>分类performance，我们这里就是simple report the TOP-1 acc on the test data.
+
+# 3.Shallow-Deep Network
+>1.Setting: 我们这里就是考虑supervised learning setting, and the standard DNN structure: a sequence of internal layers ending with a final classifer.
+
+## 3.1 Attaching the internal classifiers.
+1)FN :1个feature scaling就是reduction@我们用mix pooling@average结合max，然后就有一个linear softmax。
+
+<img width="413" alt="image" src="https://user-images.githubusercontent.com/40928887/125161759-b4e2ec00-e1b6-11eb-9ebd-78ec1bf86809.png">
+
+## 3.2 我们的IC放在哪里呢
+我们这里就是pick the internal layers closest to the 15%/30%/45%/60%/75%/90% of the full network's inference cost.
+
+我们这里几乎是6个internal predictions以及一个final的。
+
+<img width="409" alt="image" src="https://user-images.githubusercontent.com/40928887/125161827-1c00a080-e1b7-11eb-92fa-fc5fd8611775.png">
+
+## 3.3 我们是如何训练的呢/
+1.IC-only Training: 这个就是一般两种training strategy: 这个就是取决于咱们original CNN是不是pretrained
+>1.IC only training.
+
+>2.SDN training.
+
+### 3.3.1 IC-only training
+>freeze original weights, and train only the weights in the attached ICs.
+
+>我们这里有一个major drawback这里就是标准的网络仅仅是改进最后的final accuracy,
+>我们这里就是使用一个weighted loss function就是去优化所有的internal classifier。
+
+<img width="375" alt="image" src="https://user-images.githubusercontent.com/40928887/125162432-561f7180-e1ba-11eb-9a2d-1fb5902a23f9.png">
+
+# 5.1 Confidence-Based Early Exits
+这个就是借助中间的layers的IC的confidence来决定是否还要继续forward。
+
+如果exceeds the threshold parameter q.
+
+>如果我们的q value设置的比较大，那么这里就是conservative的，and in turn, reduce the early exit rates.
+
+in turn就是接着。
+
+**我们这里就是使用一个small unlabeled holdout set去search for a q value to satisfy our computational constraints.**
+
+## 5.1.1 Early Exits Mitigate the Wastful Effect
+>
+
+
+
+
+
+
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/40928887/125160639-9843b580-e1b0-11eb-948f-df361824a309.png">这里
+<img width="423" alt="image" src="https://user-images.githubusercontent.com/40928887/125160639-9843b580-e1b0-11eb-948f-df361824a309.png"> 
