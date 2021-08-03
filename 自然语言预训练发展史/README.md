@@ -49,6 +49,27 @@
 
 **两种不同的上下文信息都会编码到相同的word embedding空间里去(one line)。。。所以这个无法区分多义词的不同语义。**
 
-# 然后ElMo给出一种解决多义词的方案。
+# 然后ElMo给出一种解决多义词的方案。@这里有利用到当前情况下的上下文信息
+这个精髓就是deep contextualization, 这个context更加关键，**之前的word embedding本质上是static的方式，这个就是训练好之后每个单词的表达就固定住了，以后使用的时候，不管新句子上下文单词是什么，这个单词的word embeding不会跟着上下文场景而变化。**
+
+>ELMo这个就是我事先用LM学习一个单词的word embedding，这个时候多义词无法区分，不过这个没关系，在我实际使用word embedding的时候，单词已经具备特定上下文了。
+
+**我可以根据上下文单词的语义去调整单词的Word Embedding表示**
+
+这样经过调整后的Word Embedding更能表达在这个上下文中的具体含义，自然也就解决了多义词的问题了
+
+<img width="650" alt="image" src="https://user-images.githubusercontent.com/40928887/127983062-c21aed0c-90c6-46b2-9df2-cbac47ce9885.png">
+<img width="704" alt="image" src="https://user-images.githubusercontent.com/40928887/127983112-f6d7d4df-16ad-4fe5-a7d5-e613f2d6bf46.png">
+<img width="679" alt="image" src="https://user-images.githubusercontent.com/40928887/127983146-f8f90b21-4d7d-405c-b4c1-053e3d774d2f.png">
+
+**这个就是一定程度上可以区分多义词的效果，你想一想其实可以明白原因。**
+
+<img width="581" alt="image" src="https://user-images.githubusercontent.com/40928887/127983202-2179af27-a57c-472d-adc8-7d6680c32229.png">
+<img width="686" alt="image" src="https://user-images.githubusercontent.com/40928887/127983318-c57bb974-87af-4ad2-9948-112f0c6444c4.png">
+<img width="683" alt="image" src="https://user-images.githubusercontent.com/40928887/127983340-c2aedec3-397d-4903-9c4f-147aa6ef61ce.png">
+<img width="692" alt="image" src="https://user-images.githubusercontent.com/40928887/127983365-4df24d53-85fa-441f-8ce0-9c4a4b23d8c8.png">
+
+但是ELMo也有一些缺陷
+<img width="447" alt="image" src="https://user-images.githubusercontent.com/40928887/127983389-445c082c-2697-4d5a-81ba-1b3da63a5365.png">
 
 
