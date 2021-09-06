@@ -1,3 +1,5 @@
+# 我们该如何做科研呢？
+https://github.com/zheng95z/teach-yourself-research
 # 在写帖子的时候，可以说下面尝试用QA的形式挖掘其中一些细节知识点，去更好的理解对比学习和SimCSE
 On one hand, xxx.
 On the other hand, yyy. 
