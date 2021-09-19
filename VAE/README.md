@@ -93,6 +93,34 @@ OpenAI的VAE
 <img width="551" alt="image" src="https://user-images.githubusercontent.com/40928887/133915267-56dfcb91-9b13-4bce-a98a-3581bd896706.png">
 
 绿色的这条线就是minimization。**我们不像**
+<img width="565" alt="image" src="https://user-images.githubusercontent.com/40928887/133915697-2f4120f6-8b0c-4855-8c3b-464205b5172c.png">
+
+
+>这个就是我们想要estimate the probability distribution.
+
+<img width="542" alt="image" src="https://user-images.githubusercontent.com/40928887/133915730-99be1eab-dd3e-4e8f-acf4-d5c96c50790f.png">
+
+## 我们怎么estimate呢？
+我们可以使用高斯模型GMM。
+
+叠的高斯越多，就可以产生比较复杂的分布。
+
+<img width="552" alt="image" src="https://user-images.githubusercontent.com/40928887/133916541-9eea364d-871a-498b-a8ce-dd54846a4edb.png">
+/m
+这里就是比如我们可以采样某一个点，这里就是一个mixture。也就是一种分布。看似是一种分类嘛也就是聚类。
+
+**但是人家都说这个distributed representation是比聚类/分类好的。**
+
+VAE的话就是比如这个Z是正态分布的。那么Z的每一个dim都表示一个attribute。
+
+这里就是z有无穷多个可能，那么这个mean和variance也是无穷多个可能。
+
+**那么我们就是假设着几个都来自一个function**
+<img width="564" alt="image" src="https://user-images.githubusercontent.com/40928887/133917340-4f8383d5-cb4b-4620-b4a7-41b572d5b005.png">
+
+我们自己就是使用NN去学这个mean和variance
+****
+这里就是
 
 
 
