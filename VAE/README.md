@@ -1,3 +1,5 @@
+Encoder生成的是均值和方差。
+
 >Freman: If 
 
 <img width="528" alt="image" src="https://user-images.githubusercontent.com/40928887/133914346-f9ed5f5a-8fa9-473f-9054-2622b118d3b8.png">
