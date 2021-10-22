@@ -1,3 +1,5 @@
+# 0.folks
+>Hi, folks 你好呀伙伴们
 # 1.sample variance
 >这个就是我们想要计算这个variance。但是我们最多就是抽取部分数据来做。
 
