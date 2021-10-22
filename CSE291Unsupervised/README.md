@@ -1,3 +1,5 @@
+# -1.dendrogram
+>这个就是树状图
 # 0.folks
 >Hi, folks 你好呀伙伴们
 # 1.sample variance
